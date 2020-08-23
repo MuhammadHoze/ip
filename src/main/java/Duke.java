@@ -5,7 +5,6 @@ public class Duke {
     public static void main(String[] args) {
 
         ArrayList<String> books = new ArrayList<String>();
-        //ArrayList<String> restore = new ArrayList<String>();
         //String[] loan = new String[100]; // borrow the books
         //String[] restore = new String[100]; // return the books
         String logo = " ____        _        \n"
