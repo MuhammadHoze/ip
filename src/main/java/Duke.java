@@ -1,12 +1,12 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
-    public static void main(String[] args) {
+    private static final int MAX_INSTRUCTION = 100;
+    private static String[] instruction = new String[MAX_INSTRUCTION];
+    private static Boolean[] instructionStatus = new Boolean[MAX_INSTRUCTION];
+    private static int indexCount = 0; // Index to add in instructions to array
 
-        ArrayList<String> books = new ArrayList<String>();
-        //String[] loan = new String[100]; // borrow the books
-        //String[] restore = new String[100]; // return the books
+    public static void main(String[] args) {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -18,36 +18,56 @@ public class Duke {
         System.out.println("Hello! I'm Duke");
         System.out.println("What can I do for you?");
         System.out.println("--------------------------------------");
-
         Scanner sc = new Scanner(System.in);
         String command = sc.nextLine();
 
         while (!"bye".equals(command)) {
-            switch (command) {
-            case "read book":
+            if (command.equalsIgnoreCase("list")) {
                 System.out.println("--------------------------------------");
-                System.out.println("added: read book");
-                books.add("read book");
-                System.out.println("--------------------------------------");
-                break;
-            case "return book":
-                System.out.println("--------------------------------------");
-                System.out.println("added: return book");
-                books.add("return book");
-                System.out.println("--------------------------------------");
-                break;
-            case "list":
-                System.out.println("--------------------------------------");
-                for(int i = 0; i < books.size(); i++){
-                    System.out.println(i+1 + ". " + books.get(i)); //get the element from the ArrayList
+                for (int i = 0; i < instruction.length; i++) {
+                    if (instruction[i] == null) { // to prevent empty array values to show
+                        break;
+                    }
+                    else {
+                        System.out.println(i + 1 + ". " + "[" + getStatusIcon(i) + "]" + " " + instruction[i]);
+                    }
                 }
                 System.out.println("--------------------------------------");
+            }
+            else if (command.equalsIgnoreCase("bye")) {
                 break;
+            }
+            else if (command.contains("done")) {
+
+                String value = command.substring(5);
+                int instructNum = Integer.parseInt(value);
+                setInstruction(instructNum);
+                System.out.println("Nice! I've marked this task as done:");
+                System.out.println("[" + getStatusIcon(instructNum - 1) + "]" + " " + instruction[instructNum - 1]);
+            }
+            else {
+                instruction[indexCount] = command;
+                instructionStatus[indexCount] = false; //Initially
+                indexCount++;
             }
             command = sc.nextLine();
         }
         System.out.println("--------------------------------------");
         System.out.println("Bye. Hope to see you again soon!");
         System.out.println("--------------------------------------");
+    }
+
+    public static String getStatusIcon(int index) {
+        if (instructionStatus[index].equals(false)) {
+            return "\u2718";
+        }
+        else {
+            return "\u2713";
+        }
+    }
+
+    //This function is to mark instruction number as completed
+    public static void setInstruction(int taskNum) {
+        instructionStatus[taskNum - 1] = true; //will set that taskNum to true
     }
 }
