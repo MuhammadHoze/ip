@@ -14,16 +14,16 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
 
         System.out.println("Welcome to\n" + logo);
-        System.out.println("--------------------------------------");
+        System.out.println("----------------------------------------");
         System.out.println("Hello! I'm Duke");
         System.out.println("What can I do for you?");
-        System.out.println("--------------------------------------");
+        System.out.println("----------------------------------------");
         Scanner sc = new Scanner(System.in);
         String command = sc.nextLine();
 
         while (!"bye".equals(command)) {
             if (command.equalsIgnoreCase("list")) {
-                System.out.println("--------------------------------------");
+                System.out.println("----------------------------------------");
                 for (int i = 0; i < instruction.length; i++) {
                     if (instruction[i] == null) { // to prevent empty array values to show
                         break;
@@ -32,7 +32,7 @@ public class Duke {
                         System.out.println(i + 1 + ". " + "[" + getStatusIcon(i) + "]" + " " + instruction[i]);
                     }
                 }
-                System.out.println("--------------------------------------");
+                System.out.println("----------------------------------------");
             }
             else if (command.equalsIgnoreCase("bye")) {
                 break;
@@ -52,9 +52,9 @@ public class Duke {
             }
             command = sc.nextLine();
         }
-        System.out.println("--------------------------------------");
+        System.out.println("----------------------------------------");
         System.out.println("Bye. Hope to see you again soon!");
-        System.out.println("--------------------------------------");
+        System.out.println("----------------------------------------");
     }
 
     public static String getStatusIcon(int index) {
