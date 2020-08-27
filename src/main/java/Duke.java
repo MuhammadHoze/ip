@@ -64,7 +64,7 @@ public class Duke {
             }
             else {
                 System.out.println("----------------------------------------");
-                System.out.println("added: "+ command );
+                System.out.println("added: " + command );
                 System.out.println("----------------------------------------");
                 instruction[indexCount] = command;
                 instructionStatus[indexCount] = false; //Initially
