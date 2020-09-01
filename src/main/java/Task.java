@@ -11,14 +11,15 @@ public class Task {
 
         if (keyChar.equals("T")) {
             this.description = description.substring(1);
+            //this.date = "";
         }
         else if (keyChar.equals("D")){
             this.description = description.substring(1, description.lastIndexOf("/"));
-            this.date = description.substring(description.lastIndexOf(" ") + 1); // the space after by + 1 = Sunday
+            this.date = description.replace("by","by:").substring(description.lastIndexOf("/")+1);
         }
         else if (keyChar.equals("E")) {
             this.description = description.substring(1, description.lastIndexOf("/"));
-            this.date = description.substring(description.lastIndexOf("/") + 4); // the space after by + 1 = Sunday
+            this.date = description.replace("at","at:").substring(description.lastIndexOf("/")+1);
         }
         this.isDone = false;
     }

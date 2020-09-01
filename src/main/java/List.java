@@ -16,8 +16,16 @@ public class List {
                 break;
             }
             else {
-                System.out.println((i + 1) + ". " + "["+ instruction[i].keyChar + "]"
-                        + "[" + instruction[i].getStatusIcon() + "]" + instruction[i].description);
+                if (instruction[i].keyChar.equals("T")){
+                    System.out.println((i + 1) + ". " + "["+ instruction[i].keyChar + "]"
+                            + "[" + instruction[i].getStatusIcon() + "]"
+                            + instruction[i].description);
+                }
+                else {
+                    System.out.println((i + 1) + ". " + "[" + instruction[i].keyChar + "]"
+                            + "[" + instruction[i].getStatusIcon() + "]"
+                            + instruction[i].description + "(" + instruction[i].date + ")");
+                }
             }
         }
         System.out.println("----------------------------------------");
@@ -37,7 +45,7 @@ public class List {
         }
     }
 
-    // Other general instructions (Before Level 4)
+    // Other general instructions
    /* public void addInstruction(String description) {
         Task newInstruction = new Task(description);
         instruction[index] = newInstruction;
@@ -70,7 +78,7 @@ public class List {
         System.out.println("Got it. I've added this task: ");
         System.out.println("  [" + instruction[index].keyChar + "]"
                 + "["+ instruction[index].getStatusIcon() + "]"
-                + instruction[index].description + "(by: " + instruction[index].date + ")");
+                + instruction[index].description + "(" + instruction[index].date + ")");
         if (index == 0) {
             System.out.println("Now you have " + (index + 1) + " task in the list");
         }
@@ -89,7 +97,7 @@ public class List {
         System.out.println("Got it. I've added this task: ");
         System.out.println("  [" + instruction[index].keyChar + "]"
                 + "["+ instruction[index].getStatusIcon() + "]"
-                + instruction[index].description + "(at: " + instruction[index].date + ")");
+                + instruction[index].description + "(" + instruction[index].date + ")");
         if (index == 0) {
             System.out.println("Now you have " + (index + 1) + " task in the list");
         }
