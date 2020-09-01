@@ -45,14 +45,6 @@ public class List {
         }
     }
 
-    // Other general instructions
-   /* public void addInstruction(String description) {
-        Task newInstruction = new Task(description);
-        instruction[index] = newInstruction;
-        index++;
-        isEmpty = false;
-    } */
-
     public void addToDo (String description) {
         Task newToDo = new Task(description);
         instruction[index] = newToDo;

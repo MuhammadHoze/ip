@@ -3,7 +3,7 @@ public class Task {
     protected String description;
     protected String date;
     protected boolean isDone;
-    protected String keyChar; // To identify: ToDo, Deadline, Event
+    protected String keyChar; // To identify: ToDo(T), Deadline(D), Event(E)
 
     //This description is the string command
     public Task(String description) {
