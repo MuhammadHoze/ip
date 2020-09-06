@@ -1,3 +1,7 @@
+package duke.command;
+
+import duke.task_status.Task;
+
 public class Event extends Task {
     protected String at;
 

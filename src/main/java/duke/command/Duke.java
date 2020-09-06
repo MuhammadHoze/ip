@@ -1,3 +1,5 @@
+package duke.command;
+
 import java.util.Scanner;
 
 public class Duke {
@@ -72,7 +74,7 @@ public class Duke {
     }
 
     public static void greetMsg() {
-        System.out.println("Hello World! I'm Duke");
+        System.out.println("Hello World! I'm duke");
         System.out.println("What can I do for you?\n");
         displayLine();
     }
