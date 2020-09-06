@@ -31,14 +31,14 @@ public class Duke {
             } else if (userCommand.contains("deadline")) {
                 String deadlineInstruction = userCommand.replace("deadline", "").trim();
                 if (deadlineInstruction.isEmpty()) {
-                    System.out.println("☹ OOPS!!! The description of a todo cannot be empty.");
+                    System.out.println("☹ OOPS!!! The description of a deadline cannot be empty.");
                 } else {
                     listItem.addDeadline(deadlineInstruction);
                 }
             } else if (userCommand.contains("event")) {
                 String eventInstruction = userCommand.replace("event", "").trim();
                 if (eventInstruction.isEmpty()) {
-                    System.out.println("☹ OOPS!!! The description of a todo cannot be empty.");
+                    System.out.println("☹ OOPS!!! The description of a event cannot be empty.");
                 } else {
                     listItem.addEvent(eventInstruction);
                 }
@@ -89,10 +89,5 @@ public class Duke {
         displayLine();
         System.out.println("Bye. Hope to see you again soon!");
         displayLine();
-    }
-
-    public static void invalidEnter() {
-
-
     }
 }
