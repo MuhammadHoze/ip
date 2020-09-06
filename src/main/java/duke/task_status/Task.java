@@ -1,3 +1,5 @@
+package duke.task_status;
+
 public class Task {
 
     protected String description;

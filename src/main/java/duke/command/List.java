@@ -1,9 +1,13 @@
+package duke.command;
+
+import duke.task_status.Task;
+
 public class List {
 
     private final int MAX_INSTRUCTION = 100;
     private Task[] instruction = new Task[MAX_INSTRUCTION];
     private int index = 0; // Array index
-    private boolean isEmpty = true; // To check if Instruction array is empty
+    private boolean isEmpty = true; // To check if duke.Instruction.Duke.duke.Instruction array is empty
 
     public void printList() {
         displayLine();
@@ -17,7 +21,6 @@ public class List {
             } else {
                 System.out.println((i + 1) + ". " + instruction[i].toString());
             }
-
         }
         displayLine();
     }
