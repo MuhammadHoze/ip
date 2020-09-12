@@ -11,49 +11,59 @@ public class Duke {
         List listItem = new List();
         Scanner sc = new Scanner(System.in);
         String userCommand = sc.nextLine();
-        while (userCommand.isEmpty()) {
-            System.out.println("☹ OOPS!!! Invalid Input, Please Try Again");
-            userCommand = sc.nextLine();
-        }
+
         // This loop is to process the commands input by user
         while (!userCommand.trim().equalsIgnoreCase("bye")) {
-            if (userCommand.trim().equalsIgnoreCase("list")) {
-                listItem.printList();
-            } else if (userCommand.contains("done")) {
-                String value = userCommand.replace("done", "").trim();
-                int instructNum = Integer.parseInt(value);
-                listItem.instructionCompleted(instructNum - 1);
-            } else if (userCommand.contains("todo")) {
-                String todoInstruction = userCommand.replace("todo", "").trim();
-                if (todoInstruction.isEmpty()) {
-                    System.out.println("☹ OOPS!!! The description of a todo cannot be empty.");
+            try {
+                if (userCommand.trim().equalsIgnoreCase("list")) {
+                    listItem.printList();
+                } else if (userCommand.contains("done")) {
+                    String value = userCommand.replace("done", "").trim();
+                    if (value.isEmpty()) {
+                        throw new DukeException("Done Incomplete");
+                    } else {
+                        int instructNum = Integer.parseInt(value);
+                        listItem.instructionCompleted(instructNum - 1);
+                    }
+                } else if (userCommand.contains("todo")) {
+                    String todoInstruction = userCommand.replace("todo", "").trim();
+                    if (todoInstruction.isEmpty()) {
+                        throw new DukeException("Todo Incomplete");
+                    } else {
+                        listItem.addToDo(todoInstruction);
+                    }
+                } else if (userCommand.contains("deadline")) {
+                    String deadlineInstruction = userCommand.replace("deadline", "").trim();
+                    if (deadlineInstruction.isEmpty()) {
+                        throw new DukeException("Deadline Incomplete");
+                    } else {
+                        listItem.addDeadline(deadlineInstruction);
+                    }
+                } else if (userCommand.contains("event")) {
+                    String eventInstruction = userCommand.replace("event", "").trim();
+                    if (eventInstruction.isEmpty()) {
+                        throw new DukeException("Event Incomplete");
+                    } else {
+                        listItem.addEvent(eventInstruction);
+                    }
+                } else if (userCommand.contains("help")) {
+                    helpCommands();
+                } else if (userCommand.contains("delete")) {
+                    String value = userCommand.replace("delete", "").trim();
+                    if (value.isEmpty()) {
+                        throw new DukeException("Delete Incomplete");
+                    } else {
+                        int instructNum = Integer.parseInt(value);
+                        listItem.instructionDeleted(instructNum - 1);
+                    }
+
+
                 } else {
-                    listItem.addToDo(todoInstruction);
+                    throw new DukeException("Input Incomplete");
                 }
-            } else if (userCommand.contains("deadline")) {
-                String deadlineInstruction = userCommand.replace("deadline", "").trim();
-                if (deadlineInstruction.isEmpty()) {
-                    System.out.println("☹ OOPS!!! The description of a deadline cannot be empty.");
-                } else {
-                    listItem.addDeadline(deadlineInstruction);
-                }
-            } else if (userCommand.contains("event")) {
-                String eventInstruction = userCommand.replace("event", "").trim();
-                if (eventInstruction.isEmpty()) {
-                    System.out.println("☹ OOPS!!! The description of a event cannot be empty.");
-                } else {
-                    listItem.addEvent(eventInstruction);
-                }
-            } else if (userCommand.contains("help")) {
-                helpCommands();
-            } else {
-                System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+            } catch (DukeException e) {
             }
             userCommand = sc.nextLine();
-            while (userCommand.isEmpty()) {
-                System.out.println("☹ OOPS!!! Invalid Input, Please Try Again");
-                userCommand = sc.nextLine();
-            }
         }
         byeMsg();
     }
@@ -70,7 +80,7 @@ public class Duke {
     }
 
     public static void displayLine() {
-        System.out.println("----------------------------------------");
+        System.out.println("----------------------------------------------------------------");
     }
 
     public static void greetMsg() {

@@ -1,6 +1,8 @@
 package duke.command;
 
 import duke.task_status.Task;
+import java.util.Arrays;
+
 
 public class List {
 
@@ -25,6 +27,27 @@ public class List {
         displayLine();
     }
 
+    public void instructionDeleted(int instructNum){
+        if (isEmpty) {
+            System.out.println("All instructions have been deleted");
+        } else {
+            instruction[instructNum].markInstructionAsDeleted();
+            displayLine();
+            System.out.println("Noted. I've removed this task: \n" + "\t" + instruction[instructNum].toString());
+            Arrays.toString(instruction);
+            for(int i = instructNum; i < instruction.length-1; i++){
+                instruction[i] = instruction[i + 1];
+            }
+            index--;
+            if (index == 1) {
+                System.out.println("Now you have " + index + " task in the list");
+            } else {
+                System.out.println("Now you have " + index + " tasks in the list");
+            }
+            displayLine();
+        }
+    }
+
     public void instructionCompleted(int instructNum) {
 
         if (isEmpty) {
@@ -43,7 +66,6 @@ public class List {
         instruction[index] = newToDo;
         isEmpty = false;
         instructionAdded(newToDo);
-        index++;
     }
 
     public void addDeadline(String description) {
@@ -53,7 +75,6 @@ public class List {
         instruction[index] = newDeadline;
         isEmpty = false;
         instructionAdded(newDeadline);
-        index++;
     }
 
     public void addEvent(String description) {
@@ -63,7 +84,6 @@ public class List {
         instruction[index] = newEvent;
         isEmpty = false;
         instructionAdded(newEvent);
-        index++;
     }
 
     public static void displayLine() {
@@ -71,14 +91,27 @@ public class List {
     }
 
     public void instructionAdded(Task instruction) {
-
+        index++;
         displayLine();
         System.out.println("Got it. I've added this task: \n" + "\t" + instruction.toString());
+        if (index == 1) {
+            System.out.println("Now you have " + index + " task in the list");
+        } else {
+            System.out.println("Now you have " + index + " tasks in the list");
+        }
+        displayLine();
+    }
+
+    /*public void instructionDeleted(Task instruction){
+        displayLine();
+        System.out.println("Noted. I've removed this task: \n" + "\t" + instruction.toString());
         if (index == 0) {
             System.out.println("Now you have " + (index + 1) + " task in the list");
         } else {
             System.out.println("Now you have " + (index + 1) + " tasks in the list");
         }
         displayLine();
-    }
+
+
+    }*/
 }
