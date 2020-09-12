@@ -52,7 +52,8 @@ public class List {
                 }
                 displayLine();
             }
-        } catch(Exception e){ }
+        } catch (Exception e) {
+        }
     }
 
     public void instructionCompleted(int instructNum) {
@@ -68,7 +69,6 @@ public class List {
                 displayLine();
             }
         } catch (Exception e) {
-
         }
     }
 
@@ -112,17 +112,4 @@ public class List {
         }
         displayLine();
     }
-
-    /*public void instructionDeleted(Task instruction){
-        displayLine();
-        System.out.println("Noted. I've removed this task: \n" + "\t" + instruction.toString());
-        if (index == 0) {
-            System.out.println("Now you have " + (index + 1) + " task in the list");
-        } else {
-            System.out.println("Now you have " + (index + 1) + " tasks in the list");
-        }
-        displayLine();
-
-
-    }*/
 }
