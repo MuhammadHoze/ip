@@ -34,6 +34,14 @@ public class DukeException extends Exception {
             displayLine();
             System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
             displayLine();
+        } else if (error.equals("Empty List")){
+            displayLine();
+            System.out.println("Please add instruction first!");
+            displayLine();
+        } else if (error.equals("All Deleted")){
+            displayLine();
+            System.out.println("No instructions to delete");
+            displayLine();
         }
     }
 

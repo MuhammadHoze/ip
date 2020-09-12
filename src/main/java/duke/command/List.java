@@ -1,15 +1,16 @@
 package duke.command;
 
 import duke.task_status.Task;
-import java.util.Arrays;
 
+import java.util.Arrays;
 
 public class List {
 
     private final int MAX_INSTRUCTION = 100;
     private Task[] instruction = new Task[MAX_INSTRUCTION];
     private int index = 0; // Array index
-    private boolean isEmpty = true; // To check if duke.Instruction.Duke.duke.Instruction array is empty
+    private boolean isEmpty = true; // To check if Instruction array is empty
+
 
     public void printList() {
         displayLine();
@@ -27,37 +28,47 @@ public class List {
         displayLine();
     }
 
-    public void instructionDeleted(int instructNum){
-        if (isEmpty) {
-            System.out.println("All instructions have been deleted");
-        } else {
-            instruction[instructNum].markInstructionAsDeleted();
-            displayLine();
-            System.out.println("Noted. I've removed this task: \n" + "\t" + instruction[instructNum].toString());
-            Arrays.toString(instruction);
-            for(int i = instructNum; i < instruction.length-1; i++){
-                instruction[i] = instruction[i + 1];
-            }
-            index--;
-            if (index == 1) {
-                System.out.println("Now you have " + index + " task in the list");
+    public void instructionDeleted(int instructNum) {
+        try {
+            if (isEmpty) {
+                throw new DukeException("All Deleted");
             } else {
-                System.out.println("Now you have " + index + " tasks in the list");
+                instruction[instructNum].markInstructionAsDeleted();
+                displayLine();
+                System.out.println("Noted. I've removed this task: \n" + "\t" + instruction[instructNum].toString());
+                Arrays.toString(instruction);
+                for (int i = instructNum; i < instruction.length - 1; i++) {
+                    if (instruction[0] == null) {
+                        isEmpty = true; // List has no elements
+                    } else {
+                        instruction[i] = instruction[i + 1];
+                    }
+                }
+                index--;
+                if (index == 1) {
+                    System.out.println("Now you have " + index + " task in the list");
+                } else {
+                    System.out.println("Now you have " + index + " tasks in the list");
+                }
+                displayLine();
             }
-            displayLine();
-        }
+        } catch(Exception e){ }
     }
 
     public void instructionCompleted(int instructNum) {
+        try {
+            if (isEmpty) {
+                throw new DukeException("Empty List");
 
-        if (isEmpty) {
-            System.out.println("Please add instruction first!");
-        } else {
-            instruction[instructNum].markInstructionAsDone();
-            displayLine();
-            System.out.println("Nice! I've marked this task as done: ");
-            System.out.println(instruction[instructNum].toString());
-            displayLine();
+            } else {
+                instruction[instructNum].markInstructionAsDone();
+                displayLine();
+                System.out.println("Nice! I've marked this task as done: ");
+                System.out.println(instruction[instructNum].toString());
+                displayLine();
+            }
+        } catch (Exception e) {
+
         }
     }
 
