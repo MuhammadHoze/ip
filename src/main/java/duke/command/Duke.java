@@ -23,7 +23,7 @@ public class Duke {
                         throw new DukeException("Done Incomplete");
                     } else {
                         int instructNum = Integer.parseInt(value);
-                        listItem.instructionCompleted(instructNum - 1);
+                        listItem.instructionCompleted(instructNum);
                     }
                 } else if (userCommand.contains("todo")) {
                     String todoInstruction = userCommand.replace("todo", "").trim();
@@ -54,7 +54,7 @@ public class Duke {
                         throw new DukeException("Delete Incomplete");
                     } else {
                         int instructNum = Integer.parseInt(value);
-                        listItem.instructionDeleted(instructNum - 1);
+                        listItem.instructionDeleted(instructNum);
                     }
                 } else {
                     throw new DukeException("Input Incomplete");

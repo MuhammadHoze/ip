@@ -1,6 +1,7 @@
 package duke.command;
 
 import duke.task_status.Task;
+
 import java.util.ArrayList;
 
 public class List {
@@ -27,11 +28,13 @@ public class List {
         try {
             if (instruction.isEmpty()) {
                 throw new DukeException("All Deleted");
+            } else if (instructNum > index) {
+                throw new DukeException("Null Entry");
             } else {
-                instruction.get(instructNum).markInstructionAsDeleted();
+                instruction.get(instructNum-1).markInstructionAsDeleted();
                 displayLine();
-                System.out.println("Noted. I've removed this task: \n" + "\t" + instruction.get(instructNum).toString());
-                instruction.remove(instructNum);
+                System.out.println("Noted. I've removed this task: \n" + "\t" + instruction.get(instructNum-1).toString());
+                instruction.remove(instructNum-1);
                 index--;
                 if (index == 1) {
                     System.out.println("Now you have " + index + " task in the list");
@@ -48,12 +51,13 @@ public class List {
         try {
             if (instruction.isEmpty()) {
                 throw new DukeException("Empty List");
-
+            } else if (instructNum > index) {
+                throw new DukeException("Null Entry");
             } else {
-                instruction.get(instructNum).markInstructionAsDone();
+                instruction.get(instructNum - 1).markInstructionAsDone();
                 displayLine();
                 System.out.println("Nice! I've marked this task as done: ");
-                System.out.println(instruction.get(instructNum).toString());
+                System.out.println(instruction.get(instructNum - 1).toString());
                 displayLine();
             }
         } catch (Exception ignored) {
