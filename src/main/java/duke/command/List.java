@@ -1,28 +1,23 @@
 package duke.command;
 
 import duke.task_status.Task;
-
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class List {
 
-    private final int MAX_INSTRUCTION = 100;
-    private Task[] instruction = new Task[MAX_INSTRUCTION];
+    private final ArrayList<Task> instruction = new ArrayList<>();
     private int index = 0; // Array index
-    private boolean isEmpty = true; // To check if Instruction array is empty
-
 
     public void printList() {
         displayLine();
         System.out.println("Here are the task(s) in your list:");
-        for (int i = 0; i < instruction.length; i++) {
-            if (instruction[i] == null) { // to prevent empty array values to show
-                if (isEmpty) {
-                    System.out.println("(List is currently empty)");
-                }
-                break;
-            } else {
-                System.out.println((i + 1) + ". " + instruction[i].toString());
+        if (instruction.isEmpty()) {
+            System.out.println("(List is currently empty)");
+        } else {
+            // Used for printing elements in ArrayList
+            //instruction.forEach(System.out::println);
+            for (int i = 0; i < instruction.size(); i++) {
+                System.out.println(i + 1 + ". " + (instruction.get(i)).toString());
             }
         }
         displayLine();
@@ -30,20 +25,13 @@ public class List {
 
     public void instructionDeleted(int instructNum) {
         try {
-            if (isEmpty) {
+            if (instruction.isEmpty()) {
                 throw new DukeException("All Deleted");
             } else {
-                instruction[instructNum].markInstructionAsDeleted();
+                instruction.get(instructNum).markInstructionAsDeleted();
                 displayLine();
-                System.out.println("Noted. I've removed this task: \n" + "\t" + instruction[instructNum].toString());
-                Arrays.toString(instruction);
-                for (int i = instructNum; i < instruction.length - 1; i++) {
-                    if (instruction[0] == null) {
-                        isEmpty = true; // List has no elements
-                    } else {
-                        instruction[i] = instruction[i + 1];
-                    }
-                }
+                System.out.println("Noted. I've removed this task: \n" + "\t" + instruction.get(instructNum).toString());
+                instruction.remove(instructNum);
                 index--;
                 if (index == 1) {
                     System.out.println("Now you have " + index + " task in the list");
@@ -52,30 +40,29 @@ public class List {
                 }
                 displayLine();
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
     public void instructionCompleted(int instructNum) {
         try {
-            if (isEmpty) {
+            if (instruction.isEmpty()) {
                 throw new DukeException("Empty List");
 
             } else {
-                instruction[instructNum].markInstructionAsDone();
+                instruction.get(instructNum).markInstructionAsDone();
                 displayLine();
                 System.out.println("Nice! I've marked this task as done: ");
-                System.out.println(instruction[instructNum].toString());
+                System.out.println(instruction.get(instructNum).toString());
                 displayLine();
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
     public void addToDo(String description) {
         ToDo newToDo = new ToDo(description);
-        instruction[index] = newToDo;
-        isEmpty = false;
+        instruction.add(newToDo);
         instructionAdded(newToDo);
     }
 
@@ -83,8 +70,7 @@ public class List {
         String userInputTask = description.substring(0, description.lastIndexOf("/"));
         String userInputDate = description.substring(description.lastIndexOf("/") + 3).trim();
         Deadline newDeadline = new Deadline(userInputTask, userInputDate);
-        instruction[index] = newDeadline;
-        isEmpty = false;
+        instruction.add(newDeadline);
         instructionAdded(newDeadline);
     }
 
@@ -92,8 +78,7 @@ public class List {
         String userInputTask = description.substring(0, description.lastIndexOf("/"));
         String userInputDate = description.substring(description.lastIndexOf("/") + 3).trim();
         Event newEvent = new Event(userInputTask, userInputDate);
-        instruction[index] = newEvent;
-        isEmpty = false;
+        instruction.add(newEvent);
         instructionAdded(newEvent);
     }
 
