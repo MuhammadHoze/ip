@@ -57,11 +57,10 @@ public class Duke {
                         listItem.instructionDeleted(instructNum - 1);
                     }
 
-
                 } else {
                     throw new DukeException("Input Incomplete");
                 }
-            } catch (DukeException e) {
+            } catch (DukeException ignored) {
             }
             userCommand = sc.nextLine();
         }
