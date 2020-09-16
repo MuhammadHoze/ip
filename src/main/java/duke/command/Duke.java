@@ -120,6 +120,7 @@ public class Duke {
                         int instructNum = Integer.parseInt(value);
                         listItem.instructionDeleted(instructNum);
                     }
+
                 } else {
                     throw new DukeException("Input Incomplete");
                 }
