@@ -2,12 +2,17 @@ package duke.command;
 
 import duke.task_status.Task;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class List {
 
     private final ArrayList<Task> instruction = new ArrayList<>();
     private int index = 0; // Array index
+
+
 
     public void printList() {
         displayLine();
@@ -64,6 +69,12 @@ public class List {
         }
     }
 
+    public void addTask(Task t) {
+
+        instruction.add(t);
+        index++;
+    }
+
     public void addToDo(String description) {
         ToDo newToDo = new ToDo(description);
         instruction.add(newToDo);
@@ -86,10 +97,6 @@ public class List {
         instructionAdded(newEvent);
     }
 
-    public static void displayLine() {
-        System.out.println("----------------------------------------");
-    }
-
     public void instructionAdded(Task instruction) {
         index++;
         displayLine();
@@ -101,4 +108,22 @@ public class List {
         }
         displayLine();
     }
+
+    public static void displayLine() {
+        System.out.println("----------------------------------------");
+    }
+
+    public void save() throws IOException {
+
+        //Writing it to file
+        String fileContent = "";
+        for (int i = 0; i < instruction.size(); i++) {
+            fileContent += instruction.get(i).toFile() + "\n";
+        }
+        BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\muham\\OneDrive\\Desktop\\duke.txt"));
+        writer.write(fileContent);
+        writer.close();
+
+    }
+
 }

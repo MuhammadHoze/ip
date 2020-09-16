@@ -28,4 +28,14 @@ public abstract class Task {
     public void markInstructionAsDeleted() {
         isDeleted = true;
     }
+
+    public String toFile() {
+        String numStr = "";
+        if (isDone) {
+            numStr = "1|";
+        } else {
+            numStr = "0|";
+        }
+        return  numStr + description;
+    }
 }

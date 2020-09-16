@@ -1,14 +1,78 @@
 package duke.command;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Duke {
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
+
+        List listItem = new List();
+        File file = new File("C:\\Users\\muham\\OneDrive\\Desktop\\duke.txt");
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+
+        String st;
+        String taskDesc = "";
+        String dateDesc = "";
+        while ((st = br.readLine()) != null) {
+            String[] commandList = st.split("\\|");
+            try {
+                for (int i = 0; i < commandList.length; i++) {
+                    if (i == 2) {
+                        taskDesc = commandList[i];
+                    } else if (i == 3) {
+                        dateDesc = commandList[i];
+                    }
+                }
+                boolean checked = false;
+                if (commandList.length > 1) {
+                    if (!(commandList[1].equals("1") || commandList[1].equals("0"))) {
+                        throw new DukeException("Error reading 1 or 0, skipping to next line");
+                    }
+                    checked = commandList[1].equals("1");
+                }
+                if (commandList[0].equals("T")) {
+                    ToDo t = new ToDo(taskDesc);
+                    if (checked)
+                        t.markInstructionAsDone();
+
+
+                    listItem.addTask(t);
+                } else if (commandList[0].equals("D")) {
+                    Deadline u = new Deadline(taskDesc, dateDesc);
+
+                    if (checked)
+                        u.markInstructionAsDone();
+                    if (!taskDesc.isEmpty() && !dateDesc.isEmpty()) {
+
+                        listItem.addTask(u);
+                    } else {
+                        throw new DukeException("Error reading description or date/time, skipping to next line");
+                    }
+                } else if (commandList[0].equals("E")) {
+                    Event v = new Event(taskDesc, dateDesc);
+                    if (checked)
+                        v.markInstructionAsDone();
+                    listItem.addTask(v);
+                } else if (!commandList[0].isEmpty()) {
+                    throw new DukeException("Error reading whether if its T, D, or E, skipping to next line");
+                }
+            } catch (Exception e) {
+                System.out.println("     Error when reading current line, please fix the text file:");
+                e.printStackTrace();
+                System.out.println("     Duke will continue reading the rest of file");
+            }
+        }
+        br.close();
 
         welcomeLogo();
         greetMsg();
-        List listItem = new List();
+        //List listItem = new List();
         Scanner sc = new Scanner(System.in);
         String userCommand = sc.nextLine();
 
@@ -64,6 +128,11 @@ public class Duke {
             userCommand = sc.nextLine();
         }
         byeMsg();
+        try {
+            listItem.save();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void welcomeLogo() {
@@ -99,5 +168,7 @@ public class Duke {
         displayLine();
         System.out.println("Bye. Hope to see you again soon!");
         displayLine();
+
+
     }
 }
