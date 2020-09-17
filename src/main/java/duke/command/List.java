@@ -120,7 +120,7 @@ public class List {
         for (int i = 0; i < instruction.size(); i++) {
             fileContent += instruction.get(i).toFile() + "\n";
         }
-        BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\muham\\OneDrive\\Desktop\\duke.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\muham\\OneDrive\\Desktop\\NUS MATERIAL\\Sem 5\\CS2113\\IP\\ip\\src\\main\\java\\duke.txt"));
         writer.write(fileContent);
         writer.close();
 
