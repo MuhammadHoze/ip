@@ -12,7 +12,6 @@ public class Duke {
     public static void main(String[] args) throws IOException {
 
         List listItem = new List();
-        //File file = new File("C:\\Users\\muham\\OneDrive\\Desktop\\duke.txt");
         File file = new File("C:\\Users\\muham\\OneDrive\\Desktop\\NUS MATERIAL\\Sem 5\\CS2113\\IP\\ip\\src\\main\\java\\duke.txt");
 
 
