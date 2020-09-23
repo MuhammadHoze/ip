@@ -10,6 +10,10 @@ public class DukeException extends Exception {
             displayLine();
             System.out.println("OOPS!!! Invalid Input, Please Try Again");
             displayLine();
+        } else if (error.equals("Find Incomplete")) {
+            displayLine();
+            System.out.println("OOPS!!! A value is required after find.");
+            displayLine();
         } else if (error.equals("Done Incomplete")) {
             displayLine();
             System.out.println("OOPS!!! A value is required after done.");

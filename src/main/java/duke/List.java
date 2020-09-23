@@ -1,22 +1,25 @@
-package duke.command;
+package duke.display;
 
-import duke.task_status.Task;
+import duke.Duke;
+import duke.DukeException;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Task;
+import duke.task.ToDo;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class List {
+public class List extends Duke {
 
     private final ArrayList<Task> instruction = new ArrayList<>();
     private int index = 0; // Array index
 
-
-
     public void printList() {
         displayLine();
-        System.out.println("Here are the task(s) in your list:");
+        System.out.println("Here are the duke.task.task(s) in your list:");
         if (instruction.isEmpty()) {
             System.out.println("(List is currently empty)");
         } else {
@@ -29,6 +32,14 @@ public class List {
         displayLine();
     }
 
+   /* public void findList(String keyword) {
+        displayLine();
+        System.out.println("Here are the matching duke.task.task(s) in your list:");
+
+
+        displayLine();
+    }*/
+
     public void instructionDeleted(int instructNum) {
         try {
             if (instruction.isEmpty()) {
@@ -38,11 +49,11 @@ public class List {
             } else {
                 instruction.get(instructNum-1).markInstructionAsDeleted();
                 displayLine();
-                System.out.println("Noted. I've removed this task: \n" + "\t" + instruction.get(instructNum-1).toString());
+                System.out.println("Noted. I've removed this duke.task.task: \n" + "\t" + instruction.get(instructNum-1).toString());
                 instruction.remove(instructNum-1);
                 index--;
                 if (index == 1) {
-                    System.out.println("Now you have " + index + " task in the list");
+                    System.out.println("Now you have " + index + " duke.task.task in the list");
                 } else {
                     System.out.println("Now you have " + index + " tasks in the list");
                 }
@@ -61,7 +72,7 @@ public class List {
             } else {
                 instruction.get(instructNum - 1).markInstructionAsDone();
                 displayLine();
-                System.out.println("Nice! I've marked this task as done: ");
+                System.out.println("Nice! I've marked this duke.task.task as done: ");
                 System.out.println(instruction.get(instructNum - 1).toString());
                 displayLine();
             }
@@ -75,7 +86,7 @@ public class List {
         index++;
     }
 
-    public void addToDo(String description) {
+    public  void addToDo(String description) {
         ToDo newToDo = new ToDo(description);
         instruction.add(newToDo);
         instructionAdded(newToDo);
@@ -100,9 +111,9 @@ public class List {
     public void instructionAdded(Task instruction) {
         index++;
         displayLine();
-        System.out.println("Got it. I've added this task: \n" + "\t" + instruction.toString());
+        System.out.println("Got it. I've added this duke.task.task: \n" + "\t" + instruction.toString());
         if (index == 1) {
-            System.out.println("Now you have " + index + " task in the list");
+            System.out.println("Now you have " + index + " duke.task.task in the list");
         } else {
             System.out.println("Now you have " + index + " tasks in the list");
         }
@@ -114,7 +125,6 @@ public class List {
     }
 
     public void save() throws IOException {
-
         //Writing it to file
         String fileContent = "";
         for (int i = 0; i < instruction.size(); i++) {
@@ -123,7 +133,6 @@ public class List {
         BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\muham\\OneDrive\\Desktop\\NUS MATERIAL\\Sem 5\\CS2113\\IP\\ip\\src\\main\\java\\duke.txt"));
         writer.write(fileContent);
         writer.close();
-
     }
 
 }

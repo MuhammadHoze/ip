@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+
 public class Duke {
 
 
@@ -13,8 +14,6 @@ public class Duke {
 
         List listItem = new List();
         File file = new File("C:\\Users\\muham\\OneDrive\\Desktop\\NUS MATERIAL\\Sem 5\\CS2113\\IP\\ip\\src\\main\\java\\duke.txt");
-
-
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         String st;
@@ -41,17 +40,13 @@ public class Duke {
                     ToDo t = new ToDo(taskDesc);
                     if (checked)
                         t.markInstructionAsDone();
-
-
                     listItem.addTask(t);
                 } else if (commandList[0].equals("D")) {
                     Deadline u = new Deadline(taskDesc, dateDesc);
-
                     if (checked)
                         u.markInstructionAsDone();
                     if (!taskDesc.isEmpty() && !dateDesc.isEmpty()) {
-
-                        listItem.addTask(u);
+                        listItem.addTask(u); // add an object
                     } else {
                         throw new DukeException("Error reading description or date/time, skipping to next line");
                     }
@@ -64,12 +59,16 @@ public class Duke {
                     throw new DukeException("Error reading whether if its T, D, or E, skipping to next line");
                 }
             } catch (Exception e) {
-                System.out.println("     Error when reading current line, please fix the text file:");
+                System.out.println("Error when reading current line, please fix the text file:");
                 e.printStackTrace();
-                System.out.println("     Duke will continue reading the rest of file");
+                System.out.println("Duke will continue reading the rest of file");
             }
         }
         br.close();
+
+
+
+
 
         welcomeLogo();
         greetMsg();
@@ -82,7 +81,14 @@ public class Duke {
             try {
                 if (userCommand.trim().equalsIgnoreCase("list")) {
                     listItem.printList();
-                } else if (userCommand.contains("done")) {
+                } /*else if (userCommand.contains("find")) {
+                    String value = userCommand.replace("find", "").trim();
+                    if (value.isEmpty()) {
+                        throw new DukeException("Find Incomplete");
+                    } else {
+                        listItem.findList(value);
+                    }
+                }*/ else if (userCommand.contains("done")) {
                     String value = userCommand.replace("done", "").trim();
                     if (value.isEmpty()) {
                         throw new DukeException("Done Incomplete");
@@ -121,7 +127,6 @@ public class Duke {
                         int instructNum = Integer.parseInt(value);
                         listItem.instructionDeleted(instructNum);
                     }
-
                 } else {
                     throw new DukeException("Input Incomplete");
                 }
