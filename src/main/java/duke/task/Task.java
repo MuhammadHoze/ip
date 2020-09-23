@@ -1,4 +1,4 @@
-package duke.task_status;
+package duke.task;
 
 public abstract class Task {
 

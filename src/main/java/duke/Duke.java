@@ -1,4 +1,8 @@
-package duke.command;
+package duke;
+
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.ToDo;
 
 import java.io.BufferedReader;
 import java.io.File;

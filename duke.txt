@@ -1,3 +1,0 @@
-T|0|buy bread
-T|1|project 
-T|1|meeting
