@@ -1,8 +1,8 @@
-package storage;
+package duke;
 
 import duke.DukeException;
-import tasklist.TaskList;
-import ui.Ui;
+import static duke.Ui.*;
+
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;

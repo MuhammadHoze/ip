@@ -1,14 +1,11 @@
-package parser;
-
-import tasklist.TaskList;
-import ui.Ui;
+package duke;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import static ui.Ui.*;
+import static duke.Ui.*;
 
-public class Parser {
+public class Parser  {
 
     public static void commandExecuted(String userCommand) {
         Scanner sc = new Scanner(System.in);

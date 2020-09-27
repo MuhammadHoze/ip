@@ -1,17 +1,15 @@
-package tasklist;
+package duke;
 
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;
 import duke.task.ToDo;
-import storage.Storage;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static ui.Ui.allInstructionDeleted;
-import static ui.Ui.addInstructionBeforeCompletion;
-import static ui.Ui.instructionDoneOutOfBounds;
+import static duke.Ui.*;
 
 
 public class TaskList {

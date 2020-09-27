@@ -1,10 +1,7 @@
-package ui;
+package duke;
 
 
-import static tasklist.TaskList.addToDo;
-import static tasklist.TaskList.addDeadline;
-import static tasklist.TaskList.addEvent;
-import static tasklist.TaskList.findList;
+import static duke.TaskList.*;
 
 public class Ui {
 
@@ -35,7 +32,7 @@ public class Ui {
 
     public static void byeMsg() {
         displayLine();
-        System.out.println("Bye. All tasks have been saved. Hope to see you again soon!");
+        System.out.println("Bye. All instructions have been saved. Hope to see you again soon!");
         displayLine();
     }
 
