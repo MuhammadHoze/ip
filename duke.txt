@@ -1,4 +1,3 @@
 D|0| meeting |Sunday
-T|0| read book
-T|0| return book
-T|0| watch soccer
+T|0| buy bread
+T|0| sleep now!!

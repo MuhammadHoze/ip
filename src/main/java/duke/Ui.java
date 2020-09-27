@@ -94,7 +94,6 @@ public class Ui {
     }
 
     public static void displayDeadline(String userCommand) {
-
         if (userCommand.toLowerCase().trim().equals("deadline")) {
             displayLine();
             System.out.println("OOPS!!! The description of a deadline cannot be empty.");
@@ -126,4 +125,18 @@ public class Ui {
             findInstructionInList(keyword);
         }
     }
+
+
+    public static void displayReadingFileError(){
+        System.out.println("Error reading value, skipping to next line.");
+        System.out.println("Removed corrupted instruction. Please add again.");
+        displayLine();
+    }
+
+    public static void displayCorruptedFile(){
+        System.out.println("File is corrupted. Shutting down... ");
+        displayLine();
+
+    }
+
 }

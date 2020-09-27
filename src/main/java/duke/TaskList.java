@@ -47,7 +47,7 @@ public class TaskList {
         displayLine();
     }
 
-    public static void addTaskInFile(Task t) {
+    public static void addTaskFromFile(Task t) {
 
         instruction.add(t);
         instructionIndex++;
