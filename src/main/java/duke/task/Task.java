@@ -4,7 +4,6 @@ public abstract class Task {
 
 
     public String description;
-    //protected String description;
     protected boolean isDone;
     protected boolean isDeleted;
 
