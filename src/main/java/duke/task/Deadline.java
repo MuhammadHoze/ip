@@ -1,14 +1,17 @@
 package duke.task;
 
+//class Deadline inherits methods/attributes from class Task
 public class Deadline extends Task {
     protected String by;
 
     public Deadline(String description, String by) {
-        super(description);
+        super(description); //it is passing description into Task(String description){} HAS TO BE IN A CONSTRUCTOR
         this.by = by;
     }
 
-    @Override // overwritten the method from superclass: Task
+    // it takes the value from super.toString which is "[" + getStatusIcon() + "] " + description;
+    // from the superclass: Task
+    @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: " + by + ")";
     }

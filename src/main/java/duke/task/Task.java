@@ -6,17 +6,19 @@ public abstract class Task {
     protected boolean isDone;
     protected boolean isDeleted;
 
+    // String description: this is received from Deadline/Event/Tdo constructor
     public Task(String description) {
         this.description = description;
         this.isDone = false;
         this.isDeleted = false;
-
     }
 
     public String getStatusIcon() {
-        return (isDone ? "/" : "X");
+        return (isDone ? "/" : "X"); //return tick or X symbols
     }
 
+    //description is really just what is the task: eg. buy bread, project meeting etc
+    // this is just the skeleton thats why its abstract
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
     }

@@ -2,7 +2,7 @@ package duke.task;
 
 public class ToDo extends Task {
 
-    //Because newToDo has a constructor value
+
     public ToDo(String description) {
         super(description);
     }
