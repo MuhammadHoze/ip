@@ -5,11 +5,12 @@ import duke.task.Event;
 import duke.task.Task;
 import duke.task.ToDo;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static duke.Ui.*;
+import static duke.Ui.addInstructionBeforeCompletion;
+import static duke.Ui.allInstructionDeleted;
+import static duke.Ui.instructionDoneOutOfBounds;
 
 
 public class TaskList {
@@ -33,17 +34,17 @@ public class TaskList {
         displayLine();
     }
 
-    //HAVENT DO YET!
     public static void findList(String keyword) {
         displayLine();
         System.out.println("Here are the matching task(s) in your list:");
-        for (int i = 0; i < instruction.size(); i++) {
-            //this wil first check instruction.get(i) and see if its a Deadline/Event/tdo
-            // and then print out the toString() method of the respective Deadline/event/tdo class
-
-            System.out.println(i + 1 + ". " + (instruction.get(i)).toString());
+        int indexNum=1;
+        for (Task element : instruction){
+            if(element.description.contains(keyword)){
+                System.out.print(indexNum + ". ");
+                System.out.println(element);
+                indexNum++;
+            }
         }
-
         displayLine();
     }
 

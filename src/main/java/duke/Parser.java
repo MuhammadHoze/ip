@@ -3,7 +3,16 @@ package duke;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static duke.Ui.*;
+import static duke.Ui.displayFind;
+import static duke.Ui.displayToDo;
+import static duke.Ui.displayDeadline;
+import static duke.Ui.displayEvent;
+import static duke.Ui.displayCaseEmptyInput;
+import static duke.Ui.displayIncompleteCommand;
+import static duke.Ui.displayStringIndexOutOfBoundsExceptionMessage;
+import static duke.Ui.savingError;
+
+
 
 public class Parser  {
 

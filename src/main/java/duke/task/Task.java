@@ -2,7 +2,9 @@ package duke.task;
 
 public abstract class Task {
 
-    protected String description;
+
+    public String description;
+    //protected String description;
     protected boolean isDone;
     protected boolean isDeleted;
 

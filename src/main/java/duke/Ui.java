@@ -88,6 +88,7 @@ public class Ui {
             System.out.println("OOPS!!! The description of a todo cannot be empty.");
             displayLine();
         } else {
+            userCommand = userCommand.replace("todo", "");
             addToDo(userCommand);
         }
     }
@@ -99,6 +100,7 @@ public class Ui {
             System.out.println("OOPS!!! The description of a deadline cannot be empty.");
             displayLine();
         } else {
+            userCommand = userCommand.replace("deadline", "");
             addDeadline(userCommand);
         }
     }
@@ -106,9 +108,10 @@ public class Ui {
     public static void displayEvent(String userCommand) {
         if (userCommand.toLowerCase().trim().equals("event")) {
             displayLine();
-            System.out.println("OOPS!!! The description of a event cannot be empty.");
+            System.out.println("OOPS!!! The description of an event cannot be empty.");
             displayLine();
         } else {
+            userCommand = userCommand.replace("event", "");
             addEvent(userCommand);
         }
     }
@@ -116,7 +119,7 @@ public class Ui {
     public static void displayFind(String userCommand) {
         if (userCommand.toLowerCase().trim().equals("find")) {
             displayLine();
-            System.out.println("The description of a find cannot be empty.");
+            System.out.println("The description of find cannot be empty.");
             displayLine();
         } else {
             String value = userCommand.replace("find", "").trim();
