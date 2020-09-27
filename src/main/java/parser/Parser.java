@@ -1,9 +1,12 @@
-package duke;
+package parser;
+
+import tasklist.TaskList;
+import ui.Ui;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import static duke.Ui.*;
+import static ui.Ui.*;
 
 public class Parser {
 

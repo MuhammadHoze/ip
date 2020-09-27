@@ -1,10 +1,10 @@
-package duke;
+package ui;
 
 
-import static duke.TaskList.addToDo;
-import static duke.TaskList.addDeadline;
-import static duke.TaskList.addEvent;
-import static duke.TaskList.findList;
+import static tasklist.TaskList.addToDo;
+import static tasklist.TaskList.addDeadline;
+import static tasklist.TaskList.addEvent;
+import static tasklist.TaskList.findList;
 
 public class Ui {
 
