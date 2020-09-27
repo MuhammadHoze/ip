@@ -5,97 +5,84 @@ import duke.task.Event;
 import duke.task.Task;
 import duke.task.ToDo;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
-public class Storage  {
+import static duke.TaskList.addTaskFromFile;
+import static duke.Ui.*;
 
-    public static void readFromFile(File file){
+public class Storage {
+
+    public static void readFromFile(File file) {
         try {
-            if(file.createNewFile()) {
+            if (file.createNewFile()) {
                 System.out.println("No existing file found, new file is created");
-                Ui.displayLine();
+                displayLine();
             } else {
-                //System.out.println("Uploading data into system ...");
-                System.out.println("Upload Completed");
-                Ui.displayLine();
                 BufferedReader br = new BufferedReader(new FileReader(file));
 
-                String st;
-                String taskDesc = "";
-                String dateDesc = "";
-                while ((st = br.readLine()) != null) {
-                    String[] commandList = st.split("\\|");
+                String fileInput;
+                String instructionDesc = "";
+                String dateOfInstructionDesc = "";
+                while ((fileInput = br.readLine()) != null) {
+                    String[] commandList = fileInput.split("\\|");
+
                     try {
+                        // this is each individual value of a command to separate array index
+                        // some command have until i == 3 (deadline/event) while tdo only until i == 2
                         for (int i = 0; i < commandList.length; i++) {
                             if (i == 2) {
-                                taskDesc = commandList[i];
+                                instructionDesc = commandList[i];
                             } else if (i == 3) {
-                                dateDesc = commandList[i];
+                                dateOfInstructionDesc = commandList[i];
                             }
                         }
-                        boolean checked = false;
-                        if (commandList.length > 1) {
-                            if (!(commandList[1].equals("1") || commandList[1].equals("0"))) {
-                                throw new DukeException("Error reading 1 or 0, skipping to next line");
+                        switch (commandList[0]) {
+                        case "T":
+                            ToDo todoFromFile = new ToDo(instructionDesc);
+                            if (commandList[1].equals("1"))
+                                todoFromFile.markInstructionAsDone();
+                            addTaskFromFile(todoFromFile);
+                            break;
+                        case "D":
+                            Deadline deadlineFromFile = new Deadline(instructionDesc, dateOfInstructionDesc);
+                            if (commandList[1].equals("1")) {
+                                deadlineFromFile.markInstructionAsDone();
                             }
-                            checked = commandList[1].equals("1");
-                        }
-                        if (commandList[0].equals("T")) {
-                            ToDo t = new ToDo(taskDesc);
-                            if (checked)
-                                t.markInstructionAsDone();
-                            TaskList.addTaskInFile(t);
-                        } else if (commandList[0].equals("D")) {
-                            Deadline u = new Deadline(taskDesc, dateDesc);
-
-                            if (checked)
-                                u.markInstructionAsDone();
-                            if (!taskDesc.isEmpty() && !dateDesc.isEmpty()) {
-
-                                TaskList.addTaskInFile(u);
-                            } else {
-                                throw new DukeException("Error reading description or date/time, skipping to next line");
+                            addTaskFromFile(deadlineFromFile);
+                            break;
+                        case "E":
+                            Event eventFromFile = new Event(instructionDesc, dateOfInstructionDesc);
+                            if (commandList[1].equals("1")) {
+                                eventFromFile.markInstructionAsDone();
                             }
-                        } else if (commandList[0].equals("E")) {
-                            Event v = new Event(taskDesc, dateDesc);
-                            if (checked)
-                                v.markInstructionAsDone();
-                            TaskList.addTaskInFile(v);
-                        } else if (!commandList[0].isEmpty()) {
-                            throw new DukeException("Error reading whether if its T, D, or E, skipping to next line");
+                            addTaskFromFile(eventFromFile);
+                            break;
                         }
-                    } catch (Exception e) {
-                        System.out.println("     Error when reading current line, please fix the text file:");
-                        e.printStackTrace();
-                        System.out.println("     Duke will continue reading the rest of file");
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        displayReadingFileError();
                     }
                 }
                 br.close();
+                System.out.println("Upload Completed");
+                displayLine();
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            displayCorruptedFile();
+            System.exit(0);
         }
     }
 
-    public static void writeToFile(ArrayList <Task> instruction ) throws IOException {
+    public static void writeToFile(ArrayList<Task> instruction) throws IOException {
 
-        //Writing it to file
         BufferedWriter writer = new BufferedWriter(new FileWriter("duke.txt"));
+        StringBuilder fileContent = new StringBuilder();
 
-        String fileContent = "";
-
-        for (int i = 0; i < instruction.size(); i++) {
-            fileContent += instruction.get(i).toFile() + "\n";
+        for (Task task : instruction) {
+            fileContent.append(task.toFile()).append("\n");
         }
-
-        writer.write(fileContent);
+        writer.write(fileContent.toString());
         writer.close();
 
     }
