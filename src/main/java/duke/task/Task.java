@@ -20,7 +20,7 @@ public abstract class Task {
     }
 
     //description is really just what is the task: eg. buy bread, project meeting etc
-    // this is just the skeleton thats why its abstract
+    // this is just the skeleton that's why its abstract
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
     }
