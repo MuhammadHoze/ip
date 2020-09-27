@@ -122,8 +122,8 @@ public class Ui {
             System.out.println("The description of find cannot be empty.");
             displayLine();
         } else {
-            String value = userCommand.replace("find", "").trim();
-            findList(value);
+            String keyword = userCommand.replace("find", "").trim();
+            findList(keyword);
         }
     }
 }

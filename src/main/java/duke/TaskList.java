@@ -37,9 +37,9 @@ public class TaskList {
     public static void findList(String keyword) {
         displayLine();
         System.out.println("Here are the matching task(s) in your list:");
-        int indexNum=1;
-        for (Task element : instruction){
-            if(element.description.contains(keyword)){
+        int indexNum = 1;
+        for (Task element : instruction) {
+            if (element.description.contains(keyword)) {
                 System.out.print(indexNum + ". ");
                 System.out.println(element);
                 indexNum++;
@@ -82,7 +82,6 @@ public class TaskList {
             if (instruction.isEmpty()) {
                 addInstructionBeforeCompletion();
             } else {
-                //mark as done first
                 instruction.get(instructNum - 1).markInstructionAsDone(); // because instruction is data type Task
                 displayLine();
                 System.out.println("Nice! I've marked this task as done: ");
