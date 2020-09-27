@@ -18,7 +18,6 @@ public class TaskList {
     public static ArrayList<Task> instruction = new ArrayList<>();
     private static int instructionIndex = 0;
 
-
     public static void displayList() {
         displayLine();
         System.out.println("Here are the task(s) in your list:");
@@ -34,7 +33,7 @@ public class TaskList {
         displayLine();
     }
 
-    public static void findList(String keyword) {
+    public static void findInstructionInList(String keyword) {
         displayLine();
         System.out.println("Here are the matching task(s) in your list:");
         int indexNum = 1;
@@ -77,7 +76,7 @@ public class TaskList {
         displayInstructionAdded(newEvent);
     }
 
-    public static void instructionCompleted(int instructNum) {
+    public static void displayInstructionCompleted(int instructNum) {
         try {
             if (instruction.isEmpty()) {
                 addInstructionBeforeCompletion();
@@ -118,7 +117,7 @@ public class TaskList {
         }
     }
 
-    public static void displayInstructionAdded(Task task) { // parameter is data type Task
+    public static void displayInstructionAdded(Task task) {
         instructionIndex++;
         displayLine();
         System.out.println("Got it. I've added this task: \n" + "\t" + task.toString());
@@ -138,5 +137,4 @@ public class TaskList {
     public static void saveData() throws IOException {
         Storage.writeToFile(instruction);
     }
-
 }

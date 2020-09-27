@@ -22,7 +22,7 @@ public class Ui {
         displayLine();
     }
 
-    public static void helpCommands() {
+    public static void displayHelpCommands() {
         System.out.println("list: Outputs the tasks\n"
                 + "todo: <eg. todo visit new theme park>\n"
                 + "deadline: <eg. deadline submit report /by 11/10/2019 5pm>\n"
@@ -30,7 +30,7 @@ public class Ui {
                 + "bye: End program :(");
     }
 
-    public static void byeMsg() {
+    public static void displayByeMsg() {
         displayLine();
         System.out.println("Bye. All instructions have been saved. Hope to see you again soon!");
         displayLine();
@@ -58,19 +58,19 @@ public class Ui {
         System.out.println("----------------------------------------------------------------");
     }
 
-    public static void displayStringIndexOutOfBoundsExceptionMessage() {
+    public static void displayIndexOutOfBounds() {
         displayLine();
         System.out.println("The task you input has missing fields!");
         displayLine();
     }
 
-    public static void savingError() {
+    public static void displaySavingError() {
         displayLine();
         System.out.println("Unable to save data, please try again!");
         displayLine();
     }
 
-    public static void displayCaseEmptyInput() {
+    public static void displayEmptyInput() {
         displayLine();
         System.out.println("OOPS!!! The description cannot be empty!");
         displayLine();
@@ -123,7 +123,7 @@ public class Ui {
             displayLine();
         } else {
             String keyword = userCommand.replace("find", "").trim();
-            findList(keyword);
+            findInstructionInList(keyword);
         }
     }
 }
