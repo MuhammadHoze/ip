@@ -1,5 +1,9 @@
 package duke.task;
 
+/**
+ * A subclass of superclass Task.
+ * Override the outputs specific to task type Event.
+ */
 public class Event extends Task {
     protected String at;
 

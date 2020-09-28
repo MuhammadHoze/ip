@@ -3,9 +3,7 @@ package duke;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static duke.TaskList.displayInstructionCompleted;
-import static duke.TaskList.displayInstructionDeleted;
-import static duke.TaskList.displayList;
+import static duke.TaskList.*;
 import static duke.Ui.displayByeMsg;
 import static duke.Ui.displayDeadline;
 import static duke.Ui.displayEmptyInput;
@@ -17,9 +15,16 @@ import static duke.Ui.displayIndexOutOfBounds;
 import static duke.Ui.displaySavingError;
 import static duke.Ui.displayToDo;
 
-
+/**
+ * Deals with making sense of the user command.
+ */
 public class Parser {
-
+    /**
+     * Reads and executes the user commands accordingly.
+     * @param userCommand User input.
+     * @throws NumberFormatException If there exist a missing field for done and delete commands.
+     * @throws IOException When unable to save the file.
+     */
     public static void commandExecuted(String userCommand) {
         Scanner sc = new Scanner(System.in);
 
@@ -57,7 +62,7 @@ public class Parser {
         }
         displayByeMsg();
         try {
-            TaskList.saveData();
+            saveData();
         } catch (IOException e) {
             displaySavingError();
         }

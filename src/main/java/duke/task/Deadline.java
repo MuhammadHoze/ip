@@ -1,6 +1,11 @@
 package duke.task;
 
 //class Deadline inherits methods/attributes from class Task
+
+/**
+ * A subclass of superclass Task.
+ * Override the outputs specific to task type Deadline.
+ */
 public class Deadline extends Task {
     protected String by;
 
