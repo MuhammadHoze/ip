@@ -1,7 +1,10 @@
 package duke.task;
 
+/**
+ * A subclass of superclass Task.
+ * Override the outputs specific to task type Todo.
+ */
 public class ToDo extends Task {
-
 
     public ToDo(String description) {
         super(description);

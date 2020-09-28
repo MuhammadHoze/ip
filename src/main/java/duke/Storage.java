@@ -5,14 +5,30 @@ import duke.task.Event;
 import duke.task.Task;
 import duke.task.ToDo;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static duke.TaskList.addTaskFromFile;
-import static duke.Ui.*;
+import static duke.Ui.displayCorruptedFile;
+import static duke.Ui.displayLine;
+import static duke.Ui.displayReadingFileError;
 
+/**
+ * Deals with loading tasks from the file and saving tasks in the file.
+ */
 public class Storage {
 
+    /**
+     * Reads the file duke.txt, if exists, and outputs the contents in the list.
+     * If file does not exists, a new file is created.
+     * @param file The file which is read.
+     * @throws IOException if file is corrupted.
+     */
     public static void readFromFile(File file) {
         try {
             if (file.createNewFile()) {
@@ -26,17 +42,10 @@ public class Storage {
                 String dateOfInstructionDesc = "";
                 while ((fileInput = br.readLine()) != null) {
                     String[] commandList = fileInput.split("\\|");
-
                     try {
-                        // this is each individual value of a command to separate array index
-                        // some command have until i == 3 (deadline/event) while tdo only until i == 2
-                        for (int i = 0; i < commandList.length; i++) {
-                            if (i == 2) {
-                                instructionDesc = commandList[i];
-                            } else if (i == 3) {
-                                dateOfInstructionDesc = commandList[i];
-                            }
-                        }
+                        instructionDesc = commandList[2];
+                        if (commandList.length > 3)
+                            dateOfInstructionDesc = commandList[3];
                         switch (commandList[0]) {
                         case "T":
                             ToDo todoFromFile = new ToDo(instructionDesc);
@@ -74,6 +83,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Writes all task data into file, duke.txt in a readable format.
+     * @param instruction The tasks in the list are written into the file.
+     * @throws IOException if an error occurs during writing to file.
+     */
     public static void writeToFile(ArrayList<Task> instruction) throws IOException {
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("duke.txt"));
@@ -84,6 +98,5 @@ public class Storage {
         }
         writer.write(fileContent.toString());
         writer.close();
-
     }
 }

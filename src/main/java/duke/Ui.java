@@ -1,10 +1,19 @@
 package duke;
 
 
-import static duke.TaskList.*;
+import static duke.TaskList.addDeadline;
+import static duke.TaskList.addEvent;
+import static duke.TaskList.addToDo;
+import static duke.TaskList.findInstructionInList;
 
+/**
+ * Deals with interacting with the user.
+ */
 public class Ui {
 
+    /**
+     * Prints out the Duke logo.
+     */
     public static void welcomeLogo() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -16,72 +25,105 @@ public class Ui {
         displayLine();
     }
 
+    /**
+     * Prints out a greeting message.
+     */
     public static void greetMsg() {
         System.out.println("Hello World! I'm Duke");
         System.out.println("What can I do for you?\n");
         displayLine();
     }
 
+    /**
+     * Prints out the commands and format that are accepted by Duke.
+     */
     public static void displayHelpCommands() {
-        System.out.println("list: Outputs the tasks\n"
-                + "todo: <eg. todo visit new theme park>\n"
-                + "deadline: <eg. deadline submit report /by 11/10/2019 5pm>\n"
-                + "event: <eg. event team project meeting /at 2/10/2019 2-4pm>\n"
-                + "bye: End program :(");
+        System.out.println("list: Output all tasks\n"
+                + "todo: <eg. todo <TaskDesc> >\n"
+                + "deadline: <eg. deadline <TaskDesc> /by <TaskDate> >\n"
+                + "event: <eg. event <TaskDesc> /at <TaskDate> >\n"
+                + "done: <eg. done <TaskNumber> >\n"
+                + "done: <eg. delete <TaskNumber> >\n"
+                + "find: <eg. find <keyword> >\n"
+                + "bye: Save and end program :(");
     }
 
+    /**
+     * Prints out exit message.
+     */
     public static void displayByeMsg() {
         displayLine();
         System.out.println("Bye. All instructions have been saved. Hope to see you again soon!");
         displayLine();
     }
 
+    /**
+     * Prints out when user inputs delete command after all instructions
+     * have already been deleted from the list.
+     */
     public static void allInstructionDeleted(){
         displayLine();
         System.out.println("No instructions to delete");
         displayLine();
     }
 
+    /**
+     * Prints out when user inputs done command before any instructions are added into the list.
+     */
     public static void addInstructionBeforeCompletion(){
         displayLine();
         System.out.println("Please add instruction first!");
         displayLine();
     }
 
-    public static void instructionDoneOutOfBounds(){
+    /**
+     * Prints out when user inputs an invalid instruction number during done or delete command.
+     */
+    public static void instructionNumberOutOfBounds(){
         displayLine();
         System.out.println("Instruction number does not exist. Please try again!");
         displayLine();
     }
 
+    /**
+     * Prints out a line.
+     */
     public static void displayLine() {
         System.out.println("----------------------------------------------------------------");
     }
 
+    /**
+     * Prints out when the value is missing for a done or delete command.
+     */
     public static void displayIndexOutOfBounds() {
         displayLine();
         System.out.println("The task you input has missing fields!");
         displayLine();
     }
 
-    public static void displaySavingError() {
-        displayLine();
-        System.out.println("Unable to save data, please try again!");
-        displayLine();
-    }
-
+    /**
+     * Prints out if user presses the Enter key without any inputs.
+     */
     public static void displayEmptyInput() {
         displayLine();
         System.out.println("OOPS!!! The description cannot be empty!");
         displayLine();
     }
 
+    /**
+     * Prints out if user incorrectly enters a command which Duke does not support.
+     */
     public static void displayIncompleteCommand() {
         displayLine();
         System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
         displayLine();
     }
 
+    /**
+     * Checks if user have correctly entered the description of ToDo.
+     * Subsequently calls a function which adds the task into an ArrayList.
+     * @param userCommand User input.
+     */
     public static void displayToDo(String userCommand) {
         if (userCommand.toLowerCase().trim().equals("todo")) {
             displayLine();
@@ -93,6 +135,11 @@ public class Ui {
         }
     }
 
+    /**
+     * Checks if user have correctly entered the description of deadline.
+     * Subsequently calls a function which adds the task into an ArrayList.
+     * @param userCommand User input.
+     */
     public static void displayDeadline(String userCommand) {
         if (userCommand.toLowerCase().trim().equals("deadline")) {
             displayLine();
@@ -104,6 +151,11 @@ public class Ui {
         }
     }
 
+    /**
+     * Checks if user have correctly entered the description of event.
+     * Subsequently calls a function which adds the task into an ArrayList.
+     * @param userCommand User input.
+     */
     public static void displayEvent(String userCommand) {
         if (userCommand.toLowerCase().trim().equals("event")) {
             displayLine();
@@ -115,6 +167,11 @@ public class Ui {
         }
     }
 
+    /**
+     * Checks if user have correctly entered the description of find.
+     * Subsequently, extract out the keyword and call a function which executes the find command.
+     * @param userCommand User input.
+     */
     public static void displayFind(String userCommand) {
         if (userCommand.toLowerCase().trim().equals("find")) {
             displayLine();
@@ -126,13 +183,27 @@ public class Ui {
         }
     }
 
+    /**
+     * Prints out if there is an error in saving the file.
+     */
+    public static void displaySavingError() {
+        displayLine();
+        System.out.println("Unable to save data, please try again!");
+        displayLine();
+    }
 
+    /**
+     * Prints out if there is an error in reading the values from the .txt file.
+     */
     public static void displayReadingFileError(){
         System.out.println("Error reading value, skipping to next line.");
         System.out.println("Removed corrupted instruction. Please add again.");
         displayLine();
     }
 
+    /**
+     * Print out if entire file is corrupted and unable to load into the application.
+     */
     public static void displayCorruptedFile(){
         System.out.println("File is corrupted. Shutting down... ");
         displayLine();
