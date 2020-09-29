@@ -28,7 +28,7 @@ public class TaskList {
         displayLine();
         System.out.println("Here are the task(s) in your list:");
         if (instruction.isEmpty()) {
-            System.out.println("(List is currently empty)");
+            System.out.println("\t(List is currently empty)");
         } else {
             for (int i = 0; i < instruction.size(); i++) {
                 //this wil first check instruction.get(i) and see if its a Deadline/Event/tdo
@@ -47,12 +47,17 @@ public class TaskList {
         displayLine();
         System.out.println("Here are the matching task(s) in your list:");
         int indexNum = 1;
+        boolean isMatchKeyword = false;
         for (Task element : instruction) {
             if (element.description.contains(keyword)) {
                 System.out.print(indexNum + ". ");
                 System.out.println(element);
                 indexNum++;
+                isMatchKeyword = true;
             }
+        }
+        if (!isMatchKeyword){
+            System.out.println("\t(Sorry,no matches found)");
         }
         displayLine();
     }
