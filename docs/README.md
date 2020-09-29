@@ -12,7 +12,7 @@
     * [Deleting a task from the list](#Deleting-a-task-from-the-list): `delete`
     * [Finding tasks by entering a keyword](#Finding-tasks-by-entering-a-keyword): `find`
     * [Displaying the help commands](#Displaying-the-help-commands): `help`
-    * [Saving data into a text file](#Saving-data-into-a-text-file): 
+    * [Saving data into a text file](#Saving-data-into-a-text-file): `bye`
     * [Exiting Duke](#Exiting-duke): `bye`
 * Command Summary
 
@@ -164,6 +164,7 @@ Done | `done **TASK_NUM**`| `done 2`
 Delete | `delete **TASK_NUM**` | `delete 3`
 Find | `find **KEYWORD**`| `find book`
 Help | `help` | `help`
+Save | `bye` | `bye`
 Exit | `bye` | `bye`
 
-## End of User Guide
+## End of Duke User Guide
