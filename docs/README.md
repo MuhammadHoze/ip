@@ -3,8 +3,8 @@
 ## Table of Contents
 * Introduction
 * Quick Start
-* [Features]
-    * [Adding a 'todo' task](#adding-a-'todo'-task): `todo`
+* Features
+    * [Adding a 'todo' task](adding-a-'todo'-task): `todo`
     * [Adding a 'deadline' task](#adding-a-'deadline'-task): `deadline`
     * [Adding an 'event' task](#adding-an-'event'-task): `event`
     * [Displaying all task in the list](#displaying-all-task-in-the-list): `list`
