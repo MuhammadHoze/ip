@@ -6,7 +6,7 @@
 * Features
     * [Adding a 'todo' task](#adding-a-todo-task-todo): `todo`
     * [Adding a 'deadline' task](#adding-a-deadline-task-deadline): `deadline`
-    * [Adding an 'event' task](#adding-a-event-task-event): `event`
+    * [Adding an 'event' task](#adding-an-event-task-event): `event`
     * [Displaying all task in the list](#displaying-all-task-in-the-list-list): `list`
     * [Marking a task as done](#marking-a-task-as-done-done): `done`
     * [Deleting a task from the list](#deleting-a-task-from-the-list-delete): `delete`
