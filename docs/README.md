@@ -4,16 +4,16 @@
 * Introduction
 * Quick Start
 * Features
-    * [Adding a 'todo' task](adding-a-'todo'-task): `todo`
-    * [Adding a 'deadline' task](#adding-a-'deadline'-task): `deadline`
-    * [Adding an 'event' task](#adding-an-'event'-task): `event`
-    * [Displaying all task in the list](#displaying-all-task-in-the-list): `list`
-    * [Marking a task as done](#marking-a-task-as-done): `done`
-    * [Deleting a task from the list](deleting-a-task-from-the-list): `delete`
-    * [Finding tasks by entering a keyword](#finding-tasks-by-entering-a-keyword): `find`
-    * [Displaying the help commands](#displaying-the-help-commands): `help`
-    * [Saving data into a text file](#saving-data-into-a-text-file): `bye`
-    * [Exiting Duke](#exiting-duke): `bye`
+    * [Adding a 'todo' task](#adding-a-todo-task-todo): `todo`
+    * [Adding a 'deadline' task](#adding-a-deadline-task-deadline): `deadline`
+    * [Adding an 'event' task](#adding-a-event-task-event): `event`
+    * [Displaying all task in the list](#displaying-all-task-in-the-list-list): `list`
+    * [Marking a task as done](#marking-a-task-as-done-done): `done`
+    * [Deleting a task from the list](#deleting-a-task-from-the-list-delete): `delete`
+    * [Finding tasks by entering a keyword](#finding-tasks-by-entering-a-keyword-find): `find`
+    * [Displaying the help commands](#displaying-the-help-commands-help): `help`
+    * [Saving data into a text file](#saving-data-into-a-text-file-bye): `bye`
+    * [Exiting Duke](#exiting-duke-bye): `bye`
 * Command Summary
 
 ## Introduction 
