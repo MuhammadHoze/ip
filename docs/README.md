@@ -70,7 +70,7 @@ Example: `deadline finish README.md /by Friday`
 
     Parameter **TASK_DESC /by DATE_TIME** cannot be empty.
     
-### Adding a 'event' task: `event`   
+### Adding an 'event' task: `event`   
 
 Function: Adds a task type called event into the list.
 
