@@ -1,44 +1,73 @@
 package duke.task;
 
+/**
+ * Formats each task in the list.
+ */
 public abstract class Task {
 
-
-    public String description;
+    private String description;
     protected boolean isDone;
     protected boolean isDeleted;
 
-    // String description: this is received from Deadline/Event/Tdo constructor
+    /**
+     * Assigns values to all the private variables.
+     * @param description The task description entered by user.
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;
         this.isDeleted = false;
     }
 
-    public String getStatusIcon() {
-        return (isDone ? "\u2713" : "X"); //return tick or X symbols
+    /**
+     * Returns the description of task.
+     * @return task description.
+     */
+    public String getDescription(){
+        return description;
     }
 
-    //description is really just what is the task: eg. buy bread, project meeting etc
-    // this is just the skeleton that's why its abstract
+    /**
+     * Checks the status of the task if it has been completed or not.
+     * @return / or X symbol.
+     */
+    public String getStatusIcon() {
+        return (isDone ? "/" : "X");
+    }
+
+    /**
+     * Returns string to be displayed
+     * @return string which includes the status and task description
+     */
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
     }
 
-    public void markInstructionAsDone() {
+    /**
+     * Marks the task as completed
+     */
+    public void markTaskAsDone() {
         isDone = true;
     }
 
-    public void markInstructionAsDeleted() {
+    /**
+     * Marks the task as deleted
+     */
+    public void markTaskAsDeleted() {
         isDeleted = true;
     }
 
+    /**
+     * Writes the string to file
+     * @return string to be written into duke.txt
+     */
     public String toFile() {
-        String numStr = "";
+        String strValue = "";
         if (isDone) {
-            numStr = "1|";
+            strValue = "1|";
         } else {
-            numStr = "0|";
+            strValue = "0|";
         }
-        return  numStr + description;
+        return  strValue + description;
     }
 }

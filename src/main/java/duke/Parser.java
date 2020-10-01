@@ -3,9 +3,9 @@ package duke;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static duke.TaskList.displayInstructionCompleted;
-import static duke.TaskList.displayInstructionDeleted;
+import static duke.TaskList.displayTaskDeleted;
 import static duke.TaskList.displayList;
+import static duke.TaskList.displayTaskCompleted;
 import static duke.TaskList.saveData;
 import static duke.Ui.displayByeMsg;
 import static duke.Ui.displayDeadline;
@@ -49,12 +49,12 @@ public class Parser {
                     displayEmptyInput();
                 } else if (userCommand.contains("done")) {
                     String value = userCommand.replace("done", "").trim();
-                    int instructNum = Integer.parseInt(value);
-                    displayInstructionCompleted(instructNum);
+                    int taskNum = Integer.parseInt(value);
+                    displayTaskCompleted(taskNum);
                 } else if (userCommand.contains("delete")) {
                     String value = userCommand.replace("delete", "").trim();
-                    int instructNum = Integer.parseInt(value);
-                    displayInstructionDeleted(instructNum);
+                    int taskNum = Integer.parseInt(value);
+                    displayTaskDeleted(taskNum);
                 } else {
                     displayIncompleteCommand();
                 }

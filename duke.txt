@@ -1,3 +1,5 @@
 D|1| meeting |Sunday
 T|0| buy bread
 T|0| sleep now!!
+T|0| submit code soon
+T|0| study for cs4226

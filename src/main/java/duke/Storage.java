@@ -38,32 +38,32 @@ public class Storage {
                 BufferedReader br = new BufferedReader(new FileReader(file));
 
                 String fileInput;
-                String instructionDesc = "";
-                String dateOfInstructionDesc = "";
+                String taskDesc = "";
+                String dateOfTaskDesc = "";
                 while ((fileInput = br.readLine()) != null) {
                     String[] commandList = fileInput.split("\\|");
                     try {
-                        instructionDesc = commandList[2];
+                        taskDesc = commandList[2];
                         if (commandList.length > 3)
-                            dateOfInstructionDesc = commandList[3];
+                            dateOfTaskDesc = commandList[3];
                         switch (commandList[0]) {
                         case "T":
-                            ToDo todoFromFile = new ToDo(instructionDesc);
+                            ToDo todoFromFile = new ToDo(taskDesc);
                             if (commandList[1].equals("1"))
-                                todoFromFile.markInstructionAsDone();
+                                todoFromFile.markTaskAsDone();
                             addTaskFromFile(todoFromFile);
                             break;
                         case "D":
-                            Deadline deadlineFromFile = new Deadline(instructionDesc, dateOfInstructionDesc);
+                            Deadline deadlineFromFile = new Deadline(taskDesc, dateOfTaskDesc);
                             if (commandList[1].equals("1")) {
-                                deadlineFromFile.markInstructionAsDone();
+                                deadlineFromFile.markTaskAsDone();
                             }
                             addTaskFromFile(deadlineFromFile);
                             break;
                         case "E":
-                            Event eventFromFile = new Event(instructionDesc, dateOfInstructionDesc);
+                            Event eventFromFile = new Event(taskDesc, dateOfTaskDesc);
                             if (commandList[1].equals("1")) {
-                                eventFromFile.markInstructionAsDone();
+                                eventFromFile.markTaskAsDone();
                             }
                             addTaskFromFile(eventFromFile);
                             break;
@@ -85,16 +85,16 @@ public class Storage {
 
     /**
      * Writes all task data into file, duke.txt in a readable format.
-     * @param instruction The tasks in the list are written into the file.
+     * @param task The tasks in the list are written into the file.
      * @throws IOException if an error occurs during writing to file.
      */
-    public static void writeToFile(ArrayList<Task> instruction) throws IOException {
+    public static void writeToFile(ArrayList<Task> task) throws IOException {
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("duke.txt"));
         StringBuilder fileContent = new StringBuilder();
 
-        for (Task task : instruction) {
-            fileContent.append(task.toFile()).append("\n");
+        for (Task instruction : task) {
+            fileContent.append(instruction.toFile()).append("\n");
         }
         writer.write(fileContent.toString());
         writer.close();

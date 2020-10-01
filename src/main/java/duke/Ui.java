@@ -4,7 +4,7 @@ package duke;
 import static duke.TaskList.addDeadline;
 import static duke.TaskList.addEvent;
 import static duke.TaskList.addToDo;
-import static duke.TaskList.findInstructionInList;
+import static duke.TaskList.findTaskInList;
 
 /**
  * Deals with interacting with the user.
@@ -38,14 +38,18 @@ public class Ui {
      * Prints out the commands and format that are accepted by Duke.
      */
     public static void displayHelpCommands() {
-        System.out.println("list: Output all tasks\n"
-                + "todo: <eg. todo <TaskDesc> >\n"
-                + "deadline: <eg. deadline <TaskDesc> /by <TaskDate> >\n"
-                + "event: <eg. event <TaskDesc> /at <TaskDate> >\n"
-                + "done: <eg. done <TaskNumber> >\n"
-                + "done: <eg. delete <TaskNumber> >\n"
-                + "find: <eg. find <keyword> >\n"
-                + "bye: Save and end program :(");
+        displayLine();
+        System.out.println(
+                  "list:        Output all tasks\n"
+                + "todo:        eg. todo <TaskDesc>\n"
+                + "deadline:    eg. deadline <TaskDesc> /by <TaskDate>\n"
+                + "event:       eg. event <TaskDesc> /at <TaskDate>\n"
+                + "done:        eg. done <TaskNumber>\n"
+                + "delete:      eg. delete <TaskNumber>\n"
+                + "find:        eg. find <keyword>\n"
+                + "help:        Prints out the help commands\n"
+                + "bye:         Save and end program :(");
+        displayLine();
     }
 
     /**
@@ -53,35 +57,35 @@ public class Ui {
      */
     public static void displayByeMsg() {
         displayLine();
-        System.out.println("Bye. All instructions have been saved. Hope to see you again soon!");
+        System.out.println("Bye! All tasks have been saved. Hope to see you again soon!");
         displayLine();
     }
 
     /**
-     * Prints out when user inputs delete command after all instructions
+     * Prints out when user inputs delete command after all tasks
      * have already been deleted from the list.
      */
-    public static void allInstructionDeleted(){
+    public static void allTaskDeleted(){
         displayLine();
-        System.out.println("No instructions to delete");
-        displayLine();
-    }
-
-    /**
-     * Prints out when user inputs done command before any instructions are added into the list.
-     */
-    public static void addInstructionBeforeCompletion(){
-        displayLine();
-        System.out.println("Please add instruction first!");
+        System.out.println("No tasks to delete");
         displayLine();
     }
 
     /**
-     * Prints out when user inputs an invalid instruction number during done or delete command.
+     * Prints out when user inputs done command before any task is added into the list.
      */
-    public static void instructionNumberOutOfBounds(){
+    public static void addTaskBeforeCompletion(){
         displayLine();
-        System.out.println("Instruction number does not exist. Please try again!");
+        System.out.println("Please add task first!");
+        displayLine();
+    }
+
+    /**
+     * Prints out when user inputs an invalid task number during done or delete command.
+     */
+    public static void taskNumberOutOfBounds(){
+        displayLine();
+        System.out.println("Task number does not exist. Please try again!");
         displayLine();
     }
 
@@ -179,7 +183,7 @@ public class Ui {
             displayLine();
         } else {
             String keyword = userCommand.replace("find", "").trim();
-            findInstructionInList(keyword);
+            findTaskInList(keyword);
         }
     }
 
@@ -197,7 +201,7 @@ public class Ui {
      */
     public static void displayReadingFileError(){
         System.out.println("Error reading value, skipping to next line.");
-        System.out.println("Removed corrupted instruction. Please add again.");
+        System.out.println("Removed corrupted task. Please add again.");
         displayLine();
     }
 
@@ -209,5 +213,4 @@ public class Ui {
         displayLine();
 
     }
-
 }
