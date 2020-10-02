@@ -29,7 +29,7 @@ require help in organizing their tasks such as todo, deadline and events systema
 3. Type `cmd` in the address bar of File Explorer which contains the duke.jar file and press `Enter`. 
 Command prompt will open. 
 
-4. Run command `java -jar duke.jar`
+4. Run command `java -jar ip.jar`
 
 5. Refer to the section on Features for the commands and its uses.
 
