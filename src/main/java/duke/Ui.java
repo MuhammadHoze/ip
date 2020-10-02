@@ -110,7 +110,7 @@ public class Ui {
      */
     public static void displayEmptyInput() {
         displayLine();
-        System.out.println("OOPS!!! The description cannot be empty!");
+        System.out.println("OOPS!!! The Enter key is pressed without any input!");
         displayLine();
     }
 
