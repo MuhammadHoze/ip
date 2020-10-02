@@ -12,12 +12,13 @@ import static duke.Ui.welcomeLogo;
  * Duke application begins here.
  */
 
-public class Duke  {
+public class Duke {
 
     /**
      * Displays greeting.
      * Loads the contents from existing file.
      * Takes in user input.
+     *
      * @param args
      */
     public static void main(String[] args) {

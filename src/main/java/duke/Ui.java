@@ -126,6 +126,7 @@ public class Ui {
     /**
      * Checks if user have correctly entered the description of ToDo.
      * Subsequently calls a function which adds the task into an ArrayList.
+     *
      * @param userCommand User input.
      */
     public static void displayToDo(String userCommand) {
@@ -142,6 +143,7 @@ public class Ui {
     /**
      * Checks if user have correctly entered the description of deadline.
      * Subsequently calls a function which adds the task into an ArrayList.
+     *
      * @param userCommand User input.
      */
     public static void displayDeadline(String userCommand) {
@@ -158,6 +160,7 @@ public class Ui {
     /**
      * Checks if user have correctly entered the description of event.
      * Subsequently calls a function which adds the task into an ArrayList.
+     *
      * @param userCommand User input.
      */
     public static void displayEvent(String userCommand) {
@@ -174,6 +177,7 @@ public class Ui {
     /**
      * Checks if user have correctly entered the description of find.
      * Subsequently, extract out the keyword and call a function which executes the find command.
+     *
      * @param userCommand User input.
      */
     public static void displayFind(String userCommand) {
@@ -211,6 +215,5 @@ public class Ui {
     public static void displayCorruptedFile(){
         System.out.println("File is corrupted. Shutting down... ");
         displayLine();
-
     }
 }

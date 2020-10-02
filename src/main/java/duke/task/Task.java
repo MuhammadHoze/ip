@@ -11,6 +11,7 @@ public abstract class Task {
 
     /**
      * Assigns values to all the private variables.
+     *
      * @param description The task description entered by user.
      */
     public Task(String description) {
@@ -21,14 +22,16 @@ public abstract class Task {
 
     /**
      * Returns the description of task.
+     *
      * @return task description.
      */
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
     /**
      * Checks the status of the task if it has been completed or not.
+     *
      * @return / or X symbol.
      */
     public String getStatusIcon() {
@@ -37,6 +40,7 @@ public abstract class Task {
 
     /**
      * Returns string to be displayed
+     *
      * @return string which includes the status and task description
      */
     public String toString() {
@@ -59,6 +63,7 @@ public abstract class Task {
 
     /**
      * Writes the string to file
+     *
      * @return string to be written into duke.txt
      */
     public String toFile() {
@@ -68,6 +73,6 @@ public abstract class Task {
         } else {
             strValue = "0|";
         }
-        return  strValue + description;
+        return strValue + description;
     }
 }

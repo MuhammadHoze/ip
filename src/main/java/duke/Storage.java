@@ -26,6 +26,7 @@ public class Storage {
     /**
      * Reads the file duke.txt, if exists, and outputs the contents in the list.
      * If file does not exists, a new file is created.
+     *
      * @param file The file which is read.
      * @throws IOException if file is corrupted.
      */
@@ -85,6 +86,7 @@ public class Storage {
 
     /**
      * Writes all task data into file, duke.txt in a readable format.
+     *
      * @param task The tasks in the list are written into the file.
      * @throws IOException if an error occurs during writing to file.
      */

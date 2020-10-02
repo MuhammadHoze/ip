@@ -39,6 +39,7 @@ public class TaskList {
 
     /**
      * Prints out the tasks that has the matching keyword.
+     *
      * @param keyword Checks if the description of each task in the list matches.
      */
     public static void findTaskInList(String keyword) {
@@ -54,7 +55,7 @@ public class TaskList {
                 isMatchKeyword = true;
             }
         }
-        if (!isMatchKeyword){
+        if (!isMatchKeyword) {
             System.out.println("\t(Sorry,no matches found)");
         }
         displayLine();
@@ -62,6 +63,7 @@ public class TaskList {
 
     /**
      * Adds in the tasks to the list upon reading from file duke.txt.
+     *
      * @param instruction Task read from file duke.txt.
      */
     public static void addTaskFromFile(Task instruction) {
@@ -73,6 +75,7 @@ public class TaskList {
     /**
      * Adds a new Todo type task to the list.
      * Calls a function to display the task added.
+     *
      * @param description Description of the task.
      */
     public static void addToDo(String description) {
@@ -85,6 +88,7 @@ public class TaskList {
      * Adds a new Deadline type task to the list
      * Extracts out the task description and task Date.
      * Calls a function to display the task added.
+     *
      * @param description Description of the task.
      */
     public static void addDeadline(String description) {
@@ -100,6 +104,7 @@ public class TaskList {
      * Adds a new Event type task to the list
      * Extracts out the task description and task Date.
      * Calls a function to display the task added.
+     *
      * @param description Description of the task.
      */
     public static void addEvent(String description) {
@@ -113,6 +118,7 @@ public class TaskList {
     /**
      * Prints out the task that user sets as Done.
      * Checks if task number is correctly entered by user.
+     *
      * @param taskNum Identifies which task is completed.
      * @throws IndexOutOfBoundsException If task number does not exist in the list.
      */
@@ -136,6 +142,7 @@ public class TaskList {
      * Prints out the task that user wants to Delete.
      * Checks if task number is correctly entered by user.
      * Prints out the remaining number of task/s left in the list.
+     *
      * @param taskNum Identifies which task is deleted.
      * @throws IndexOutOfBoundsException If task number does not exist in the list.
      */
@@ -164,6 +171,7 @@ public class TaskList {
     /**
      * Prints out the task which is added to the list.
      * Prints out the updated total number of task/s in the list.
+     *
      * @param task The task which is added.
      */
     public static void displayTaskAdded(Task task) {
@@ -187,6 +195,7 @@ public class TaskList {
 
     /**
      * Calls function to write data into file after "bye" command is entered by user.
+     *
      * @throws IOException if writing to file fails.
      */
     public static void saveData() throws IOException {
