@@ -1,0 +1,9 @@
+todo submit code
+deadline complete ip /by friday
+event party after ip /at friday 2nd Oct
+list
+done 1
+list
+delete 2
+find ip
+bye

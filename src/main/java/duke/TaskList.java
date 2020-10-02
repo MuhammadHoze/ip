@@ -94,7 +94,6 @@ public class TaskList {
     public static void addDeadline(String description) {
         String userInputTask = description.substring(0, description.lastIndexOf("/"));
         String userInputDate = description.substring(description.lastIndexOf("/") + 3).trim();
-        System.out.println(userInputDate);
         Deadline newDeadline = new Deadline(userInputTask, userInputDate);
         task.add(newDeadline); // added into ArrayList
         displayTaskAdded(newDeadline); // argument is an object
