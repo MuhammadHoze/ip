@@ -27,7 +27,7 @@ public class Parser {
      *
      * @param userCommand User input.
      * @throws NumberFormatException If there exist a missing field for done and delete commands.
-     * @throws IOException           When unable to save the file.
+     * @throws IOException When unable to save the file.
      */
     public static void commandExecuted(String userCommand) {
         Scanner sc = new Scanner(System.in);
